@@ -1,0 +1,88 @@
+
+    .profile-contact {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+    }
+    .bg-red {
+      background-color: #dc3545;
+    }
+    .profile-contact h6 {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .btn-contact {
+      display: flex;
+      justify-content: center;
+    }
+    .btn-pf {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-pf i {
+      margin-right: 8px;
+    }
+    .btn-pf span {
+      white-space: nowrap;
+    }
+
+    /* Estilos para móvil */
+    @media (max-width: 768px) {
+      .profile-contact {
+        margin-top: 15px;
+        padding: 12px;
+      }
+      .btn-pf {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 15px;
+      }
+      .btn-pf i {
+        font-size: 18px;
+      }
+      .btn-pf span {
+        font-size: 14px;
+      }
+    }
+    .generating-pdf {
+      background-color: white !important;
+      color: black !important;
+    }
+    
+    .generating-pdf img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .fa {
+      font-size: 15px !important;
+    }
+    /* En tu archivo CSS global o en el componente */
+.pdf-grid .grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pdf-grid .grid-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.pdf-grid .grid-item {
+  width: 100%;
+  height: 400px; /* Altura fija para uniformidad */
+  overflow: hidden;
+}
+
+.pdf-grid .grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

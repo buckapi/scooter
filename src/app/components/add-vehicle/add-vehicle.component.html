@@ -1,0 +1,160 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-area">
+                <main id="main" class="main-content">
+                    <div class="tfcl-dashboard">
+                        <h1 class="admin-title " style="padding: 50px;">Agregemos un nuevo registro, 
+                            <span [hidden]="vehicleTypeSelected" class="text-muted" style="font-size: 2rem; font-weight: 200;">Indique el Tipo de Vehículo *</span>
+
+                            <span [hidden]="!vehicleTypeSelected" class="text-muted" style="font-size: 2rem; font-weight: 200;">Ahora, añade las fotos y demás detalles del vehiculo *</span>
+                        </h1> 
+                        
+   <!-- Tipo de Vehículo -->
+    
+   <div class="form-group" style="margin-bottom: 150px;
+   margin-top: 50px; align-items: center;align-items: center;
+   justify-content: center;
+   display: flex;
+   " [hidden]="vehicleTypeSelected">
+    <div class="vehicle-type-cards-container">
+        <!-- <div class="vehicle-type-card" 
+             *ngFor="let type of vehicleTypes"  
+             (click)="onVehicleTypeChange(type)"
+             [hidden]="type.id === 'p3dknr5mjqszwvy'"
+             (mouseenter)="hoverCard($event)"
+             (mouseleave)="unhoverCard($event)">
+            <div class="card-content">
+                <h3>{{ type.name }}</h3>
+            </div>
+        </div>      -->
+         <div class="vehicle-type-card" 
+             *ngFor="let type of vehicleTypes"  
+             (click)="onVehicleTypeChange(type)"
+             (mouseenter)="hoverCard($event)"
+             (mouseleave)="unhoverCard($event)">
+            <div class="card-content">
+                <h3>{{ type.name }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+                        <!-- Sección de Fotos -->
+                        <div class="tfcl-add-listing upload-photo" [hidden]="!vehicleTypeSelected">
+                            <h3>Subir Fotos</h3>
+                            <!-- <div class="upload-media">
+                                <div class="custom-file-upload">
+                                    <div *ngIf="selectedImage" class="image-preview">
+                                        <img [src]="selectedImagePrev" alt="Selected Image" class="img-thumbnail"
+                                             style="border-radius: 50%; cursor: pointer; border: 5px solid #3ba5a8; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease, transform 0.3s ease; max-width: 150px; max-height: 150px;" />
+                                    </div>
+                                    <input #imageUpload id="imageUpload" type="file" (change)="onImageChange($event)" class="form-control"
+                                           accept="image/*" style="display: none;" />
+                                    <label for="imageUpload" class="btn mb-2 me-2 btn-primary">
+                                        <i class="fa-solid fa-search me-2"></i>Imágen de producto
+                                    </label>
+                                    <div *ngIf="!selectedImage" class="text-danger">* Por favor, suba una imagen.</div>
+                                </div>
+                            </div> -->
+                            <div class="clearfix">
+                                <div class="custom-file-upload">
+                                  <!-- Vista previa de múltiples imágenes -->
+                                  <div *ngIf="selectedImages.length > 0" class="image-previews">
+                                    <div *ngFor="let image of selectedImages; let i = index" class="image-preview-item">
+                                      <img [src]="image.preview" alt="Selected Image" class="img-thumbnail"
+                                           style="border-radius: 15px; cursor: pointer; border: 2px solid #0d6efc; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease, transform 0.3s ease; max-width: 250px; max-height: 250px;" />
+                                      <button type="button" class="btn btn-danger btn-sm remove-image" (click)="removeImage(i)">
+                                        <i class="fa-solid fa-trash"></i>
+                                        vehicleTypeSelected</button>
+                                    </div>
+                                  </div>
+                                  
+                                  <!-- Input para múltiples archivos -->
+                                  <input #imageUpload id="imageUpload" type="file" (change)="onImageChange($event)" class="form-control"
+                                         accept="image/*" style="display: none;" multiple />
+                                  <label for="imageUpload" class="btn mb-2 me-2 btn-primary">
+                                    <i class="fa-solid fa-circle-plus me-2"></i>Agregar imágen
+                                  </label>
+                                  <div *ngIf="selectedImages.length === 0" class="text-danger">* Por favor, suba al menos una imagen.</div>
+                                </div>
+                              </div>
+                            <div class="thumbnail-media">
+                                <!-- Miniaturas de fotos subidas -->
+                                <div class="item" *ngFor="let photo of vehicle.files">
+                                    <img [src]="photo.url" alt="thumb">
+                                    <a >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detalles del Vehículo -->
+                        <div class="tfcl-add-listing car-details" [hidden]="!vehicleTypeSelected || selectedImages.length === 0">
+                            <h3>Detalles del Vehículo</h3>
+
+                            <!-- <form (ngSubmit)="onSubmit()"> -->
+                                <form (ngSubmit)="onSubmit()">
+                                  
+                                    <div class="form-group">  
+                                        <div class="form-group-1">
+                                            <!-- <div class="form-group ">
+                                                <label>Nombre del Vehículo *</label>
+                                                <input name="name" [(ngModel)]="vehicle.name" required class="form-control" placeholder="Ej: Toyota Corolla Hybrid">
+                                            </div> -->
+
+
+
+                                        <!-- Marca -->
+                                        <div class="form-group">
+                                            <label>Marca *</label>
+                                            <input name="brand" [(ngModel)]="vehicle.brand" required class="form-control" placeholder="Ej: Toyota">
+                                        </div>
+                                        
+
+                                            <div class="form-group ">
+                                                <label>Precio (COP)</label>
+                                                <input name="price" [(ngModel)]="vehicle.price" class="form-control" placeholder="Ej: 25000">
+                                            </div>
+                                               <!-- Año -->
+                                        <div class="form-group">
+                                            <label>Modelo *</label>
+                                            <input name="year" [(ngModel)]="vehicle.year" required class="form-control" min="1990">
+                                        </div>
+                                        </div>
+                                      
+                                       
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group col-md-12">
+                                            <label>Descripción</label>
+                                            <textarea name="description" [(ngModel)]="vehicle.description" placeholder="Describa las características del vehículo" class="form-control"></textarea>
+                                        </div>
+                                
+                                
+                                        <!-- Modelo -->
+                                        <!-- <div class="form-group">
+                                            <label>Modelo *</label>
+                                            <input name="model" [(ngModel)]="vehicle.model" required class="form-control" placeholder="Ej: Corolla">
+                                        </div> -->
+                                
+                                     
+                                    </div>
+                               
+                                   
+                                
+                               
+                                    <!-- Botones de envío -->
+                                    <div class="group-button-submit">
+                                        <button type="submit" class="pre-btn" >Guardar Vehículo</button>
+                                        <button type="button" class="second-btn">Vista Previa</button>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>

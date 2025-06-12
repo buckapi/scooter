@@ -1,0 +1,85 @@
+<!-- widegt List car -->
+<section class="tf-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-section flex align-center justify-space flex-wrap gap-20">
+                    <h2 class="wow fadeInUpSmall" data-wow-delay="0.2s" data-wow-duration="1000ms">
+                      Mostrando {{globalService.getVehicleType(globalService.typeIdSelected)?.name}}
+                    
+                    </h2>
+                    <a 
+                    (click)="globalService.setRoute('shop')"
+                     class="tf-btn-arrow wow fadeInUpSmall" 
+                     data-wow-delay="0.2s"
+                     [hidden]="globalService.dashboardOption === 'by-budget'"
+                        data-wow-duration="1000ms"
+                        >Ver todos<i class="icon-autodeal-btn-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="flat-tabs themesflat-tabs">
+                    <div class="box-tab center">
+                        <ul class="menu-tab tab-title style flex">
+                            <li class="item-title active ">
+                                <!-- <h5 class="inner">Todos</h5> -->
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-tab">
+                        <div class="content-inner tab-content">
+                            <div class="list-car-grid-2">
+                                <div
+                                [hidden]="globalService.vehicleTypeSelected && globalService.typeIdSelected !== vehicle.vehicleType?.id"
+                                 class="box-car-list style-2 hv-one" *ngFor="let vehicle of (realtimeVehiclesService.vehicles$ | async | slice:0:4)">
+                                    <div class="image-group relative">
+                                      <div class="top flex-two">
+                                  
+                                        <div class="year flag-tag">{{ vehicle.year }}</div>
+                                      </div>
+                                     
+                                      <div class="image-group relative ">
+                                        <app-vehicle-slider [images]="vehicle.files"></app-vehicle-slider>
+                                      </div>
+                                    
+                                    </div>
+                                    <div class="content">
+                                     
+                                      <h5 class="link-style-1">
+                                        <a (click)="globalService.setRoute('car-detail', { id: vehicle.id })">{{ vehicle.name }}</a>
+                                      </h5>
+                                      <h5 class="link-style-1">
+                                        <a (click)="globalService.setRoute('car-detail')">{{vehicle.description}}
+
+
+                                        </a>
+                                        
+                                    </h5>
+                                    <p class="text-color-3 font">{{ globalService.getVehicleType(vehicle.vehicleType?.id ?? '')?.name }}</p>
+
+                                      <div class="money fs-20 fw-5 lh-25 text-color-3">
+                                        <span style="color: #000">
+                                          $ COP
+                                        </span>
+                                        
+                                        {{ vehicle.price | number : '1.0-0' }}</div>
+                                      <div class="days-box flex justify-space align-center">
+                                        <!-- <div class="img-author">
+                                          <img class="" src="{{ vehicle.files?.[0] }}" loading="lazy" alt="image" />
+                                          <span class="font text-color-2 fw-5">{{ vehicle.brand }} {{ vehicle.model }}</span>
+                                        </div> -->
+                                        <a (click)="globalService.setRoute('car-detail', { id: vehicle.id })" class="view-car">Ver más</a>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<button class="sc-button mx-auto d-block mb-5" (click)="globalService.setRoute('shop')" style="border: 1px solid #fff; font-weight: 500; font-size: 16px;  color: #fff;">Ver más</button>
