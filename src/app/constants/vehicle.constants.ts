@@ -8,19 +8,27 @@ export const VEHICLE_TYPES = {
   },  
   ORIGINAL: {
     id: "a2sfnr9nmcqzhbp",
-    name: "Vehículos de línea original",
+    name: "Bici-motos",
   },
   REPAIRED_SALVAGE: {
     id: "k5mgnr7plbqxwvy",
-      name: "Vehículos de salvamento reparados",
+      name: "Trimotos",
     },
     UNREPAIRED_SALVAGE: {
       id: "r9tqzn2sfncmhbp",
-      name: "Vehículos de salvamento sin reparar",
+      name: "Moto carga",
     },
     MOTORCYCLES: {
       id: "p3dknr5mjqszwvy",
-      name: "Motos",
+      name: "Motos eléctricas",
+    },
+    BIKE: {
+      id: "p3dknr5mjqszwvy",
+      name: "Bicicletas eléctricas",
+    },
+    SCOOTER: {
+      id: "p3dknr5mjqszwvy",
+      name: "Scooters eléctricos",
     },
   } as const;
   
