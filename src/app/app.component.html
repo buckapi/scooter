@@ -17,16 +17,36 @@
       <app-repair *ngIf="globalService.activeRoute === 'repair'"></app-repair>
       <app-autoparts *ngIf="globalService.activeRoute === 'autoparts'"></app-autoparts>
 
-    <!-- app.whatsapp.html -->
-    <!-- app.component.html -->
-<!--  -->
-<!-- app.component.html -->
-<div class="whatsapp-container">
-    <!-- Enlace de WhatsApp con el mensaje de bienvenida -->
-    <a href="https://wa.me/573233036339?text=%C2%A1Bienvenido%20a%20Delta%20Autos%20Invermax!%20Ofrecemos%20venta%20de%20veh%C3%ADculos%20de%20salvamento,%20latoner%C3%ADa,%20pintura%20y%20asesoramiento%20legal." class="whatsapp-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 40px; margin-bottom: 5px;">
-    </a>
-</div>
+      <div class="whatsapp-container dropdown">
+        <button class="whatsapp-float btn btn-dark dropdown-toggle"
+                id="whatsappDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Contactar por WhatsApp">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+               alt="WhatsApp"
+               style="width: 28px;">
+        </button>
+      
+        <ul class="dropdown-menu shadow dropdown-menu-end animate__animated animate__fadeIn"
+            aria-labelledby="whatsappDropdown" style="max-width: 25%;">
+          <li>
+            <a class="dropdown-item"
+               href="https://wa.me/573017243547?text=%C2%A1Bienvenido%20a%20Delta%20Autos%20Invermax!%20Ofrecemos%20venta%20de%20veh%C3%ADculos%20de%20salvamento,%20latoner%C3%ADa,%20pintura%20y%20asesoramiento%20legal."
+               target="_blank">
+              📍 Ibagué (301 724 3547)
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item"
+               href="https://wa.me/573233036339?text=%C2%A1Bienvenido%20a%20Delta%20Autos%20Invermax!%20Ofrecemos%20venta%20de%20veh%C3%ADculos%20de%20salvamento,%20latoner%C3%ADa,%20pintura%20y%20asesoramiento%20legal."
+               target="_blank">
+              📍 Sabaneta (323 303 6339)
+            </a>
+          </li>
+        </ul>
+      </div>
+      
 
 
 
@@ -290,7 +310,7 @@
                               </div>
                           </div>
                       </div>
-                      <a href="compare.html" class="button tfcl-compare-listing-button">Compare</a>
+                      <a class="button tfcl-compare-listing-button">Compare</a>
                   </div>
               </div>
 
